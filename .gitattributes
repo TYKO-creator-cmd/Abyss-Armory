@@ -1,2 +1,51 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marchand d'Armes - RP GMod</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        .chat-box {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #444;
+            padding: 10px;
+            background-color: #222;
+            height: 300px;
+            overflow-y: scroll;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue chez le Marchand d'Armes</h1>
+    <h3>Chat en Direct</h3>
+    <div class="chat-box" id="chatBox"></div>
+    <input type="text" id="pseudo" placeholder="Choisissez un pseudo">
+    <input type="text" id="message" placeholder="Tapez votre message">
+    <button onclick="sendMessage()">Envoyer</button>
+    
+    <script>
+        const chatBox = document.getElementById("chatBox");
+        function sendMessage() {
+            let pseudo = document.getElementById("pseudo").value || "Anonyme";
+            let message = document.getElementById("message").value;
+            if (message.trim() !== "") {
+                chatBox.innerHTML += `<p><strong>${pseudo}:</strong> ${message}</p>`;
+                document.getElementById("message").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
